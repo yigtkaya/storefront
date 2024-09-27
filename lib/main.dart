@@ -1,37 +1,62 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:storefront/core/constants/app_design_constant.dart';
+import 'package:storefront/core/observers/bloc_observer.dart';
+import 'package:storefront/core/theme/theme_data.dart';
+import 'package:storefront/dependecy_injection/inject.dart';
+import 'package:storefront/localization/app_localizations.dart';
+import 'package:storefront/localization/helper/bloc/language_bloc.dart';
+
+part 'setup.dart';
 
 void main() {
-  runApp(const MyApp());
+  setup(
+    () => BlocProvider<LanguageBloc>(
+      create: (context) => getIt.call()..add(const LoadLanguage()),
+      child: App(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return BlocBuilder<LanguageBloc, LanguageState>(
+      builder: (context, state) {
+        return ScreenUtilInit(
+          designSize: AppDesignConstants.designSize,
+          minTextAdapt: true,
+          splitScreenMode: false,
+          child: KeyboardDismissOnTap(
+            child: MaterialApp(
+              title: "StoreFront",
+              theme: ThemeController().themeData,
+              locale: state.selectedLanguage.locale,
+              localizationsDelegates: const [
+                AppLocalizations.delegate, // Add this line
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizations.supportedLocales,
+              home: MyHomePage(
+                title: "StoreFront",
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
