@@ -1,14 +1,14 @@
-// auth_repository_impl.dart
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:storefront/core/network/dio_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:storefront/features/data/auth_repository.dart';
+import 'package:storefront/features/auth/data/auth_repository.dart';
 
 @Injectable(as: AuthRepository)
 final class AuthRepositoryImpl implements AuthRepository {
-  final Dio dio;
+  final DioManager dioManager;
 
-  AuthRepositoryImpl({required this.dio});
+  // Constructor that accepts a DioManager instance
+  AuthRepositoryImpl(this.dioManager);
 
   @override
   Future<String> getAuthorizationCode() async {
@@ -38,7 +38,7 @@ final class AuthRepositoryImpl implements AuthRepository {
     final clientSecret = 'your_client_secret';
     final tokenUrl = 'https://magaza-adiniz.myideasoft.com/oauth/v2/token';
 
-    final response = await dio.post(
+    final response = await dioManager.dio.post(
       tokenUrl,
       data: {
         'grant_type': 'authorization_code',
@@ -60,7 +60,7 @@ final class AuthRepositoryImpl implements AuthRepository {
     final clientSecret = 'your_client_secret';
     final tokenUrl = 'https://magaza-adiniz.myideasoft.com/oauth/v2/token';
 
-    final response = await dio.post(
+    final response = await dioManager.dio.post(
       tokenUrl,
       data: {
         'grant_type': 'refresh_token',

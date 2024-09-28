@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -7,9 +8,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 class DioManager {
   final Dio _dio;
 
-  /// Constructor for DioManager that requires a [baseUrl].
-  DioManager(@Named('baseUrl') String baseUrl)
-      : _dio = Dio(BaseOptions(baseUrl: baseUrl, contentType: 'application/json')) {
+  DioManager() : _dio = Dio(BaseOptions(baseUrl: dotenv.env['BASE_URL'] ?? "", contentType: 'application/json')) {
     _dio.interceptors.add(
       PrettyDioLogger(
         requestHeader: true,

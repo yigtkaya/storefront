@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,10 +10,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:storefront/core/constants/app_design_constant.dart';
 import 'package:storefront/core/observers/bloc_observer.dart';
 import 'package:storefront/core/theme/theme_data.dart';
 import 'package:storefront/dependecy_injection/inject.dart';
+import 'package:storefront/features/auth/presentation/root_view.dart';
 import 'package:storefront/localization/app_localizations.dart';
 import 'package:storefront/localization/helper/bloc/language_bloc.dart';
 
@@ -51,9 +55,7 @@ class App extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: AppLocalizations.supportedLocales,
-              home: MyHomePage(
-                title: "StoreFront",
-              ),
+              home: RootView(),
             ),
           ),
         );

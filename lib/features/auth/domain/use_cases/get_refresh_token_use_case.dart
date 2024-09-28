@@ -1,6 +1,6 @@
 // refresh_token_usecase.dart
 import 'package:injectable/injectable.dart';
-import 'package:storefront/features/data/auth_repository.dart';
+import 'package:storefront/features/auth/data/auth_repository.dart';
 
 /// A use case class that refreshes the access token from the repository.
 @injectable

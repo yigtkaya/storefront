@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:storefront/features/data/auth_repository.dart';
+import 'package:storefront/features/auth/data/auth_repository.dart';
 
 /// A use case class that gets the authorization code from the repository.
 @injectable

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:storefront/core/bloc/base_bloc.dart';
-import 'package:storefront/features/domain/use_cases/get_acces_token_use_case.dart';
-import 'package:storefront/features/domain/use_cases/get_autharization_code_use_case.dart';
-import 'package:storefront/features/domain/use_cases/get_refresh_token_use_case.dart';
+import 'package:storefront/features/auth/domain/use_cases/get_acces_token_use_case.dart';
+import 'package:storefront/features/auth/domain/use_cases/get_autharization_code_use_case.dart';
+import 'package:storefront/features/auth/domain/use_cases/get_refresh_token_use_case.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

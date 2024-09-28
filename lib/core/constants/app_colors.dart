@@ -11,22 +11,11 @@ final class AppColors {
   static const kRed100 = Color(0xFFDA4949); // Red color 100%
 
   //?PRIMARY COLORS
-  // static const kPrimary900 = Color(0xFF551C00);
-  // static const kPrimary800 = Color(0xFF772800);
-  // static const kPrimary700 = Color(0xFF993300);
-  // static const kPrimary600 = Color(0xFFBB3E00);
-  // static const kPrimary500 = Color(0xFFDD500A);
-  // static const kPrimary100 = Color(0xFFFF671B);
-  // static const kPrimary300 = Color(0xFFFF894E);
-  // static const kPrimary200 = Color(0xFFFFAB81);
-  // static const kPrimary100 = Color(0xFFFFCDB5);
-
-  //? PRIMARY COLORS (Updated with mainColor)
-  static const kPrimary100 = Color(0xFFE2725B); // Main color 100%
-  static const kPrimary75 = Color(0xBFE2725B); // Main color 75% opacity
-  static const kPrimary50 = Color(0x80E2725B); // Main color 50% opacity
-  static const kPrimary15 = Color(0x26E2725B); // Main color 15% opacity
-  static const kPrimary7 = Color(0x12E2725B); // Main color 7% opacity
+  static const kPrimary100 = Color(0xFF0077C9); // New blue color (0, 119, 201)
+  static const kPrimary75 = Color(0xB20077C9); // New blue color 75% opacity
+  static const kPrimary50 = Color(0x800077C9); // New blue color 50% opacity
+  static const kPrimary15 = Color(0x260077C9); // New blue color 15% opacity
+  static const kPrimary7 = Color(0x120077C9); // New blue color 7% opacity
   static const kPrimarySoluk = Color(0xFFF1B9AD); // Soluk color
 
   //?SECONDARY COLORS
@@ -50,6 +39,7 @@ final class AppColors {
   static const kSuccess300 = Color(0xFF9CFFC1);
   static const kSuccess200 = Color(0xFFC5FFDA);
   static const kSuccess100 = Color(0xFFEDFFF3);
+  static const kIdeaSoftGreen = Color(0xFFA3D35E); // New green color (163, 211, 94)
 
   //!DANGER COLORS
   static const kDanger900 = Color(0xFF450303);
@@ -94,6 +84,7 @@ final class AppColors {
   static const hemenAlTeklifIleUrunSatildi = Color(0xFFEA580C); // rgb(234, 88, 12)
   static const hemenAl = Color(0xFFEA580C); // rgb(234, 88, 12)
   static const disabledColor = Color(0xFF94A3B8); // rgb(148, 163, 184)
+
   //*SUCCESS COLORS
   static const kSuccessBorder = Color(0xFF4ADE80); // border: rgb(74 222 128)
   static const kSuccessBg = Color(0xFFF0FDF4); // bg: rgb(240 253 244)
