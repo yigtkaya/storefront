@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:storefront/dependecy_injection/inject.config.dart';
@@ -12,5 +13,5 @@ void configureDependencies() {
 @module
 abstract class DioModule {
   @Named('baseUrl')
-  String get baseUrl => 'https://api.example.com'; // or pass it from a config file.
+  String get baseUrl => dotenv.env['BASE_URL'] ?? 'https://default-url.com';
 }

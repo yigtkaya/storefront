@@ -8,6 +8,8 @@ Future<void> setup(FutureOr<Widget> Function() builder) async {
 
     systemUIModeConfiguration();
 
+    await dotenv.load(fileName: ".env");
+
     configureDependencies();
 
     Bloc.observer = const AppBlocObserver();
